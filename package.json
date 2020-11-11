@@ -1,13 +1,30 @@
 {
   "name": "nni-unifi-sample-angular-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": "Nelnet Velocity",
+  "contributors": [
+    {
+      "name": "Emily Mikl",
+      "email": "emily.mikl@nelnet.net"
+    }
+  ],
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nelnet-velocity/nni-unifi-sample-angular-app.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "audit": "npm run check && npm run prettier:check",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build:check": "tsc --noEmit",
+    "check": "npm run lint && npm run test && npm run build:check",
+    "test": "ng test --watch=false",
+    "lint": "ng lint && npm run prettier && npm run stylelint",
+    "prettier:check": "prettier --check .",
+    "prettier": "prettier --write .",
+    "stylelint": "stylelint src/app/**/*.scss"
   },
   "private": true,
   "dependencies": {
@@ -27,9 +44,9 @@
     "@angular-devkit/build-angular": "~0.1002.0",
     "@angular/cli": "~10.2.0",
     "@angular/compiler-cli": "~10.2.0",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -38,7 +55,13 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "protractor": "~7.0.0",
+    "prettier": "^2.1.2",
+    "stylelint": "^13.7.2",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.18.0",
+    "stylelint-selector-bem-pattern": "^2.1.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
